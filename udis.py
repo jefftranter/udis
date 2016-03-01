@@ -26,6 +26,7 @@ import signal
 
 pcr = 1
 und = 2
+z80bit = 4
 
 # Functions
 
@@ -181,7 +182,7 @@ while True:
         # Handle relative addresses. Indicated by the flag pcr being set.
         # Assumes the operand that needs to be PC relative is the last one.
         # Note: Code will need changes if more flags are added.
-        if flags & 1 == pcr:
+        if flags & pcr:
             if op[length-1] < 128:
                 op[length-1] = address + op[length-1] + length
             else:
@@ -195,7 +196,14 @@ while True:
         elif length == 2:
             operand = format.format(op[1])
         elif length == 3:
-            operand = format.format(op[1], op[2])
+            if flags & z80bit:
+                opcode = (opcode << 16) + op[2]
+                # reread opcode table for real format string
+                length, mnemonic, mode, flags = opcodeTable[opcode]
+                format = addressModeTable[mode]
+                operand = format.format(op[1])
+            else:
+                operand = format.format(op[1], op[2])
         elif length == 4:
             operand = format.format(op[1], op[2], op[3])
         elif length == 5:
