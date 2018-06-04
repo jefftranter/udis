@@ -17,7 +17,6 @@
 
 import os
 import sys
-import fileinput
 import argparse
 import signal
 
