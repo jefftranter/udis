@@ -60,7 +60,7 @@ addressModeTable = {
 "direct,@r1"       : "${0:02X},@r1",
 "direct,a"         : "${0:02X},a",
 "direct,direct"    : "${0:02X},${1:02X}",
-"direct,immed"     : "${0:02X},#{1:02X}",
+"direct,immed"     : "${0:02X},#${1:02X}",
 "direct,offset"    : "${0:02X},${1:02X}",
 "direct,r0"        : "${0:02X},r0",
 "direct,r1"        : "${0:02X},r1",
@@ -268,7 +268,7 @@ opcodeTable = {
 0x7e : [ 2, "mov",   "r6,immed"         ],
 0x7f : [ 2, "mov",   "r7,immed"         ],
 
-0x80 : [ 2, "sjmp",  "offset"           ],
+0x80 : [ 2, "sjmp",  "offset", pcr      ],
 0x81 : [ 2, "ajmp",  "addr11"           ],
 0x82 : [ 2, "anl",   "c,bit"            ],
 0x83 : [ 1, "movc",  "a,@a+pc"          ],
