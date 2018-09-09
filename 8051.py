@@ -168,7 +168,7 @@ opcodeTable = {
 
 0x20 : [ 3, "jb",    "bit,offset"       ],
 0x21 : [ 2, "ajmp",  "addr11"           ],
-0x22 : [ 1, "ret",   ""                 ],  
+0x22 : [ 1, "ret",   ""                 ],
 0x23 : [ 1, "rl",    "a"                ],
 0x24 : [ 2, "add",   "a,immed"          ],
 0x25 : [ 2, "add",   "a,direct"         ],
