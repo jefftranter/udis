@@ -140,12 +140,12 @@ while True:
             length = 1  # Invalid opcode
             format = ""
             mnemonic = "???"
-        
+
         if flags & 2 == und and not args.undocumented:
             # currently only handles one-byte undocumented opcodes
             format = ""
             mnemonic = "???"
-            
+
 
 # Disassembly format:
 # XXXX  XX XX XX XX XX  nop    ($1234,X)
