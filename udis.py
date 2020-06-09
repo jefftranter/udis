@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 #
 # Universal Disassembler
-# Copyright (c) 2013-2015 by Jeff Tranter <tranter@pobox.com>
+# Copyright (c) 2013-2020 by Jeff Tranter <tranter@pobox.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,12 +30,9 @@ z80bit = 4
 # Functions
 
 
-def isprint(c):
+def isprint(char):
     "Return if character is printable ASCII"
-    if c >= '@' and c <= '~':
-        return True
-    else:
-        return False
+    return '@' <= char <= '~'
 
 
 # Avoids an error when output piped, e.g. to "less"
@@ -96,7 +93,7 @@ s = "                          "
 
 # Print initial origin address
 if args.nolist is False:
-    print("{0:04X}{1:s}.org   ${2:04X}".format(address, s[0:maxLength*3+3], address))
+    print("{0:04X}{1:s}.org   ${0:04X}".format(address, s[0:maxLength*3+3]))
 else:
     print(" .org   ${0:04X}".format(address))
 
@@ -104,7 +101,7 @@ while True:
     try:
         b = f.read(1)  # Get binary byte from file
 
-        if len(b) == 0:  # handle EOF
+        if not b:  # handle EOF
             if args.nolist is False:
                 print("{0:04X}{1:s}end".format(address, s[0:maxLength*3+3]))
             break
@@ -115,7 +112,7 @@ while True:
         # Handle if opcode is a leadin byte
         if opcode in leadInBytes:
             b = f.read(1)  # Get next byte of extended opcode
-            if len(b) == 0:  # Unexpected EOF
+            if not b:  # Unexpected EOF
                 break
             opcode = (opcode << 8) + ord(b)
             leadin = True
@@ -164,9 +161,9 @@ while True:
 
         # Get any operands and store in an array
         for i in range(1, maxLength):
-            if (i < length):
+            if i < length:
                 b = f.read(1)
-                if len(b) == 0:  # Unexpected EOF
+                if not b:  # Unexpected EOF
                     break
                 op[i] = ord(b)  # Get operand bytes
                 if args.nolist is False:
@@ -175,7 +172,7 @@ while True:
                 if args.nolist is False and leadin is False and i != length-1:
                     line += "   "
 
-        if len(b) == 0:  # Unexpected EOF
+        if not b:  # Unexpected EOF
             break
 
         # Handle relative addresses. Indicated by the flag pcr being set.

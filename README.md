@@ -11,28 +11,31 @@ The following CPUs are either supported or planned to be supported:
 CPU    Status
 ---    ------
 
-1802   possible
+6502    done
 
-6502   done
+65816   done
 
-65816  done
+65C02   done
 
-65C02  done
+6800    done
 
-6800   done
+6809    done (incomplete)
 
-6809   done (incomplete)
+6811    done
 
-6811   done
+8080    done
 
-8080   done
+8085    done
 
-8051   done (incomplete)
+8051    done (incomplete)
 
-F8     possible
+Z80     done
 
-Z80    done
+F8      possible
 
+1802    possible
+
+TMS9900 possible
 
 
 usage: udis.py [-h] [-c CPU] [-n] [-a ADDRESS] [-i] filename
