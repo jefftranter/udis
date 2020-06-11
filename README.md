@@ -33,7 +33,7 @@ Z80     done
 
 F8      possible
 
-1802    possible
+1802    done
 
 TMS9900 possible
 
