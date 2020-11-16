@@ -140,6 +140,7 @@ while True:
 
         if flags & 2 == und and not args.undocumented:
             # currently only handles one-byte undocumented opcodes
+            length = 1
             format = ""
             mnemonic = "???"
 
