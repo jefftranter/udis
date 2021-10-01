@@ -877,8 +877,6 @@ opcodeTable = {
 0xddb6 : [ 3, "or",   "indix+d"   ],
 0xddbe : [ 3, "cp",   "indix+d"   ],
 
-0xdd8e : [3,  "adc",  "indix+d"   ],
-
 0xed40 : [ 2, "in",   "b,indc"   ],
 0xed41 : [ 2, "out",  "indc,b"   ],
 0xed42 : [ 2, "sbc",  "hl,bc"    ],
