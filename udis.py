@@ -57,7 +57,7 @@ try:
     exec(open(plugin).read())
 except FileNotFoundError:
     print(("error: CPU plugin file '{}' not found.".format(plugin)), file=sys.stderr)
-    print("The following CPUs are supported: 1802 6502 65816 65c02 6800 6809 6811 8051 8080 8085 z80")
+    print("The following CPUs are supported: 1802 6502 65816 65c02 6800 6801/6803 6809 6811 8051 8080 8085 z80")
     sys.exit(1)
 
 # Get filename from command line arguments.
