@@ -35,6 +35,10 @@ def isprint(char):
     return '@' <= char <= '~'
 
 
+def auto_int(x):
+    return int(x, 0)
+
+
 # Avoids an error when output piped, e.g. to "less"
 signal.signal(signal.SIGPIPE, signal.SIG_DFL)
 
@@ -44,7 +48,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("filename", help="Binary file to disassemble")
 parser.add_argument("-c", "--cpu", help="Specify CPU type (defaults to 6502)", default="6502")
 parser.add_argument("-n", "--nolist", help="Don't list  instruction bytes (make output suitable for assembler)", action="store_true")
-parser.add_argument("-a", "--address", help="Specify decimal starting address (defaults to 0)", default=0, type=int)
+parser.add_argument("-a", "--address", help="Specify starting address (defaults to 0)", default=0, type=auto_int)
 parser.add_argument("-u", "--undocumented", help="Allow undocumented opcodes", action="store_true")
 parser.add_argument("-i", "--invalid", help="Show invalid opcodes as ??? rather than constants", action="store_true")
 args = parser.parse_args()

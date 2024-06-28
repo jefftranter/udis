@@ -55,6 +55,6 @@ optional arguments:
   -n, --nolist          Don't list instruction bytes (make output suitable for assembler)
 
   -a ADDRESS, --address ADDRESS
-                        Specify decimal starting address (defaults to 0)
+                        Specify starting address (defaults to 0)
 
   -i, --invalid         Show invalid opcodes as ??? rather than constants
